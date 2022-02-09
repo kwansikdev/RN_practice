@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {KeyboardAvoidingView, StyleSheet, Platform} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import AddTodo from './components/AddTodo';
 
@@ -16,13 +16,16 @@ import Empty from './components/Empty';
 const App = () => {
   const today = new Date();
 
-  console.log(today);
   return (
     <SafeAreaProvider>
       <SafeAreaView edges={['bottom']} style={styles.block}>
-        <DateHead date={today} />
-        <Empty />
-        <AddTodo />
+        <KeyboardAvoidingView
+          behavior={Platform.select({ios: 'padding'})}
+          style={styles.block}>
+          <DateHead date={today} />
+          <Empty />
+          <AddTodo />
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
