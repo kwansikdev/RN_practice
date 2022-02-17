@@ -1,12 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
-import Profile from './Profile';
+import {NavigationContainer} from '@react-navigation/native';
+import RootStack from './screens/RootStack';
 
 const App = () => {
   return (
-    <Profile name="Kwansik Kim">
-      <Text>Hello World</Text>
-    </Profile>
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
   );
 };
 
