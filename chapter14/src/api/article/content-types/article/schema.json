@@ -27,6 +27,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
+      "private": true,
       "mappedBy": "article"
     }
   }
