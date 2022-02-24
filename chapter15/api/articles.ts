@@ -6,3 +6,9 @@ export async function getArticles() {
 
   return response.data;
 }
+
+export async function getArticle(id: number) {
+  const response = await client.get<Article>(`/articles/${id}`);
+
+  return response.data;
+}

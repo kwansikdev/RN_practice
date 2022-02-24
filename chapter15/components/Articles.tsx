@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import {Article} from '../api/types';
-import ArticleItem from './ArticlesItem';
+import ArticleItem from './ArticleItem';
 
 export interface ArticlesProps {
   articles: Article[];

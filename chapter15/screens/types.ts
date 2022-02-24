@@ -23,6 +23,9 @@ export type MainTabRouteProp = RouteProp<RootStackParmList, 'MainTab'>;
 // RootStack
 export type RootStackParmList = {
   MainTab: MainTabNavigationScreenParms;
+  Article: {
+    id: number;
+  };
 };
 export type RootStackNavigationProp =
   NativeStackNavigationProp<RootStackParmList>;
