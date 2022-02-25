@@ -1,12 +1,12 @@
 import client from './client';
 import {AuthResult, User} from './types';
 
-interface RegisterParams {
+interface LoginParams {
   identifier: string;
   password: string;
 }
 
-interface LoginParams {
+interface RegisterParams {
   username: string;
   email: string;
   password: string;
