@@ -30,6 +30,9 @@ export type RootStackParmList = {
   Login: undefined;
   Register: undefined;
   MyArticles: undefined;
+  Write: {
+    articleId?: number;
+  };
 };
 export type RootStackNavigationProp =
   NativeStackNavigationProp<RootStackParmList>;
