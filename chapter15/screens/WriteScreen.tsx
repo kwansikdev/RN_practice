@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {useMutation, useQueryClient} from 'react-query';
+import {InfiniteData, useMutation, useQueryClient} from 'react-query';
 import {writeArticle} from '../api/articles';
 import {Article} from '../api/types';
 import {RootStackNavigationProp} from './types';
@@ -28,9 +28,21 @@ function WriteScreen() {
       // // 캐시 데이터 업데이트
       // queryClient.setQueryData('articles', articles.concat(articles));
       // 캐시 키로 데이터를 조회한 후 그 데이터를 업데이트 함수를 사용하여 업데이트
-      queryClient
-        .setQueryData<Article[]>('articles', articles => articles ?? [])
-        .concat(article);
+      queryClient.setQueryData<InfiniteData<Article[]>>('articles', data => {
+        if (!data) {
+          return {
+            pageParmas: [undefined],
+            pages: [[article]],
+          };
+        }
+        const [firstPage, ...rest] = data.pages;
+
+        return {
+          ...data,
+          pages: [[article, ...firstPage], ...rest],
+        };
+      });
+
       navigation.goBack();
     },
   });
