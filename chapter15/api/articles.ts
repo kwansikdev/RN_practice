@@ -44,3 +44,9 @@ export async function modifyArticle(params: {
 
   return response.data;
 }
+
+export async function deleteArticle(id: number) {
+  await client.delete<Article>(`/articles/${id}`);
+
+  return null;
+}
