@@ -33,3 +33,14 @@ export async function writeArticle(params: {title: string; body: string}) {
 
   return response.data;
 }
+
+export async function modifyArticle(params: {
+  id: number;
+  title: string;
+  body: string;
+}) {
+  const {id, title, body} = params;
+  const response = await client.put<Article>(`/article/${id}`, {title, body});
+
+  return response.data;
+}
