@@ -17,7 +17,7 @@ function AskDialog({
   title,
   message,
   confirmText,
-  cancelText,
+  cancelText = '취소',
   isDestructive,
   onClose,
   onConfrim,
